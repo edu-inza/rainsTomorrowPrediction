@@ -8,7 +8,7 @@ api_address = "127.0.0.1"
 #api_port = os.environ.get('API_PORT')
 api_port = "8000"
 
-def set_result(endpoint:str, username:str, password:str, expected_result:int, status_code:int, item_dict:dict, score:str):
+def set_result(endpoint:str, username:str, password:str, expected_result:int, status_code:int, item_dict:dict, prediction:str):
     output = '''
     ============================
             Endpoint test
@@ -24,7 +24,7 @@ def set_result(endpoint:str, username:str, password:str, expected_result:int, st
     expected result = {expected_result}
     actual result = {status_code}
 
-    score = {score}
+    prediction = {prediction}
 
     ==>  {test_status}
 
@@ -41,7 +41,7 @@ def set_result(endpoint:str, username:str, password:str, expected_result:int, st
     # impression dans un fichier
     parent_path = "./logs/"
     with open(os.path.join(parent_path, 'api_test.log'), 'a') as file:
-        file.write(output.format(endpoint=endpoint, username=username, password=password, date_exec=now_string, expected_result=expected_result, status_code=status_code, test_status=test_status, item_dict=item_dict, score=score))
+        file.write(output.format(endpoint=endpoint, username=username, password=password, date_exec=now_string, expected_result=expected_result, status_code=status_code, test_status=test_status, item_dict=item_dict, prediction=prediction))
 
 
 def TU_rainTomorrow_predict(username:str, password:str, version:str, item_dict:dict):
