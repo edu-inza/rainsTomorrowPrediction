@@ -8,7 +8,7 @@ api_address = "127.0.0.1"
 #api_port = os.environ.get('API_PORT')
 api_port = "8000"
 
-def set_result(endpoint:str, username:str, password:str, expected_result:int, status_code:int, item_dict):
+def set_result(endpoint:str, username:str, password:str, expected_result:int, status_code:int, item_dict:dict, score:str):
     output = '''
     ============================
             Endpoint test
@@ -23,6 +23,8 @@ def set_result(endpoint:str, username:str, password:str, expected_result:int, st
 
     expected result = {expected_result}
     actual result = {status_code}
+
+    score = {score}
 
     ==>  {test_status}
 
@@ -39,25 +41,8 @@ def set_result(endpoint:str, username:str, password:str, expected_result:int, st
     # impression dans un fichier
     parent_path = "./logs/"
     with open(os.path.join(parent_path, 'api_test.log'), 'a') as file:
-        file.write(output.format(endpoint=endpoint, username=username, password=password, date_exec=now_string, expected_result=expected_result, status_code=status_code, test_status=test_status, item_dict=item_dict))
+        file.write(output.format(endpoint=endpoint, username=username, password=password, date_exec=now_string, expected_result=expected_result, status_code=status_code, test_status=test_status, item_dict=item_dict, score=score))
 
-def TU_status():
-    r = requests.get(
-        url='http://{address}:{port}/status'.format(address=api_address, port=api_port)
-    )
-    set_result("/status", "", "",200, r.status_code, {})
-
-def TU_authorization(username:str, password:str, expected_result:int):
-    headers_dict = {"Authorization" : json.dumps({
-            "username": username,
-            "password": password
-        })
-    }
-    r = requests.get(
-        url='http://{address}:{port}/authorization'.format(address=api_address, port=api_port),
-        headers= headers_dict
-    )
-    set_result('/authorization', username, password, expected_result, r.status_code, {})
 
 def TU_rainTomorrow_predict(username:str, password:str, version:str, item_dict:dict):
     headers_dict = {"Authorization" : json.dumps({
@@ -71,15 +56,9 @@ def TU_rainTomorrow_predict(username:str, password:str, version:str, item_dict:d
         headers= headers_dict,
         json=item_dict
     )
-    set_result('/{version}/rainTomorrow/predict'.format(version=version), username, password, 200, r.status_code, item_dict)
+    set_result('/{version}/rainTomorrow/predict'.format(version=version), username, password, 200, r.status_code, item_dict, r.text)
 
 # TU
-TU_status()
-
-TU_authorization("alice", "wonderland", 200)
-TU_authorization("bob", "builder1", 401)
-TU_authorization("clementine1", "mandarine", 400)
-
 item1_v1_dict = {"Humidity9am": 49,"Humidity3pm": 35,"WindGustSpeed": 30,"Pressure9am": 1018.5,"MaxTemp": 23.9,"Rainfall": 0,"WindGustDir": "WNW","Location": "Brisbane","RainToday": "No","Month" : 9}
 item2_v1_dict = {"Humidity9am": 92,"Humidity3pm": 91,"WindGustSpeed": 15,"Pressure9am": 1021.4,"MaxTemp": 15,"Rainfall": 24,"WindGustDir": "SSE","Location": "Brisbane","RainToday": "Yes","Month" : 6}
 TU_rainTomorrow_predict("alice", "wonderland", "v1", item1_v1_dict)
