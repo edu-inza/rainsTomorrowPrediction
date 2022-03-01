@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rains-tomorrow-deployment
+  labels:
+    app: rains-tomorrow-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rains-tomorrow-api
+  template:
+    metadata:
+      labels:
+        app: rains-tomorrow-api
+    spec:
+      containers:
+      - name: rains-tomorrow-api
+        image: einza/rains_tomorrow_api
+        ports:
+        - containerPort: 8000

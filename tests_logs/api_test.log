@@ -2,7 +2,7 @@
     ============================
             Endpoint test
     ============================
-        Date : 01/03/2022 13:47:35
+        Date : 01/03/2022 14:16:27
     ============================
 
     request done at ""/status'"
@@ -18,7 +18,7 @@
     ============================
             Endpoint test
     ============================
-        Date : 01/03/2022 13:47:35
+        Date : 01/03/2022 14:16:27
     ============================
 
     request done at ""/authorization'"
@@ -34,7 +34,7 @@
     ============================
             Endpoint test
     ============================
-        Date : 01/03/2022 13:47:35
+        Date : 01/03/2022 14:16:27
     ============================
 
     request done at ""/authorization'"
@@ -50,7 +50,7 @@
     ============================
             Endpoint test
     ============================
-        Date : 01/03/2022 13:47:35
+        Date : 01/03/2022 14:16:27
     ============================
 
     request done at ""/authorization'"
@@ -66,86 +66,10 @@
     ============================
             Endpoint test
     ============================
-        Date : 01/03/2022 13:47:57
+        Date : 01/03/2022 14:23:53
     ============================
 
-    request done at ""/v1/rainTomorrow/predict'"
-    | username=alice
-    | password=wonderland
-    | item={'Humidity9am': 49, 'Humidity3pm': 35, 'WindGustSpeed': 30, 'Pressure9am': 1018.5, 'MaxTemp': 23.9, 'Rainfall': 0, 'WindGustDir': 'WNW', 'Location': 'Brisbane', 'RainToday': 'No', 'Month': 9}
-
-    expected result = 200
-    actual result = 200
-
-    score = {"detail":"No"}
-
-    ==>  SUCCESS
-
-    
-    ============================
-            Endpoint test
-    ============================
-        Date : 01/03/2022 13:47:57
-    ============================
-
-    request done at ""/v1/rainTomorrow/predict'"
-    | username=bob
-    | password=builder
-    | item={'Humidity9am': 92, 'Humidity3pm': 91, 'WindGustSpeed': 15, 'Pressure9am': 1021.4, 'MaxTemp': 15, 'Rainfall': 24, 'WindGustDir': 'SSE', 'Location': 'Brisbane', 'RainToday': 'Yes', 'Month': 6}
-
-    expected result = 200
-    actual result = 200
-
-    score = {"detail":"No"}
-
-    ==>  SUCCESS
-
-    
-    ============================
-            Endpoint test
-    ============================
-        Date : 01/03/2022 13:47:58
-    ============================
-
-    request done at ""/v2/rainTomorrow/predict'"
-    | username=alice
-    | password=wonderland
-    | item={'MinTemp': 13.4, 'MaxTemp': 23.9, 'WindGustSpeed': 30, 'WindSpeed3pm': 9, 'Humidity3pm': 35, 'Pressure9am': 1018.5, 'Pressure3pm': 1014.6, 'RainToday': 'No'}
-
-    expected result = 200
-    actual result = 200
-
-    score = {"detail":"No"}
-
-    ==>  SUCCESS
-
-    
-    ============================
-            Endpoint test
-    ============================
-        Date : 01/03/2022 13:47:58
-    ============================
-
-    request done at ""/v2/rainTomorrow/predict'"
-    | username=bob
-    | password=builder
-    | item={'MinTemp': 13.1, 'MaxTemp': 19.7, 'WindGustSpeed': 15, 'WindSpeed3pm': 2, 'Humidity3pm': 91, 'Pressure9am': 1021.4, 'Pressure3pm': 1018.5, 'RainToday': 'Yes'}
-
-    expected result = 200
-    actual result = 200
-
-    score = {"detail":"No"}
-
-    ==>  SUCCESS
-
-    
-    ============================
-            Endpoint test
-    ============================
-        Date : 01/03/2022 13:49:21
-    ============================
-
-    request done at ""/v1/rainTomorrow/predict'"
+    request done at "'/v1/rainTomorrow/predict'"
     | username=alice
     | password=wonderland
     | item={'Humidity9am': 49, 'Humidity3pm': 35, 'WindGustSpeed': 30, 'Pressure9am': 1018.5, 'MaxTemp': 23.9, 'Rainfall': 0, 'WindGustDir': 'WNW', 'Location': 'Brisbane', 'RainToday': 'No', 'Month': 9}
@@ -161,10 +85,42 @@
     ============================
             Endpoint test
     ============================
-        Date : 01/03/2022 13:49:22
+        Date : 01/03/2022 14:23:53
     ============================
 
-    request done at ""/v1/rainTomorrow/predict'"
+    request done at "'/status'"
+    | username=
+    | password=
+
+    expected result = 200
+    actual result = 200
+
+    ==>  SUCCESS
+
+    
+    ============================
+            Endpoint test
+    ============================
+        Date : 01/03/2022 14:23:53
+    ============================
+
+    request done at "'/authorization'"
+    | username=alice
+    | password=wonderland
+
+    expected result = 200
+    actual result = 200
+
+    ==>  SUCCESS
+
+    
+    ============================
+            Endpoint test
+    ============================
+        Date : 01/03/2022 14:23:53
+    ============================
+
+    request done at "'/v1/rainTomorrow/predict'"
     | username=bob
     | password=builder
     | item={'Humidity9am': 92, 'Humidity3pm': 91, 'WindGustSpeed': 15, 'Pressure9am': 1021.4, 'MaxTemp': 15, 'Rainfall': 24, 'WindGustDir': 'SSE', 'Location': 'Brisbane', 'RainToday': 'Yes', 'Month': 6}
@@ -180,10 +136,26 @@
     ============================
             Endpoint test
     ============================
-        Date : 01/03/2022 13:49:22
+        Date : 01/03/2022 14:23:53
     ============================
 
-    request done at ""/v2/rainTomorrow/predict'"
+    request done at "'/authorization'"
+    | username=bob
+    | password=builder1
+
+    expected result = 401
+    actual result = 401
+
+    ==>  SUCCESS
+
+    
+    ============================
+            Endpoint test
+    ============================
+        Date : 01/03/2022 14:23:54
+    ============================
+
+    request done at "'/v2/rainTomorrow/predict'"
     | username=alice
     | password=wonderland
     | item={'MinTemp': 13.4, 'MaxTemp': 23.9, 'WindGustSpeed': 30, 'WindSpeed3pm': 9, 'Humidity3pm': 35, 'Pressure9am': 1018.5, 'Pressure3pm': 1014.6, 'RainToday': 'No'}
@@ -199,10 +171,26 @@
     ============================
             Endpoint test
     ============================
-        Date : 01/03/2022 13:49:22
+        Date : 01/03/2022 14:23:54
     ============================
 
-    request done at ""/v2/rainTomorrow/predict'"
+    request done at "'/authorization'"
+    | username=clementine1
+    | password=mandarine
+
+    expected result = 400
+    actual result = 400
+
+    ==>  SUCCESS
+
+    
+    ============================
+            Endpoint test
+    ============================
+        Date : 01/03/2022 14:23:54
+    ============================
+
+    request done at "'/v2/rainTomorrow/predict'"
     | username=bob
     | password=builder
     | item={'MinTemp': 13.1, 'MaxTemp': 19.7, 'WindGustSpeed': 15, 'WindSpeed3pm': 2, 'Humidity3pm': 91, 'Pressure9am': 1021.4, 'Pressure3pm': 1018.5, 'RainToday': 'Yes'}

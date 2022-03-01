@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  fastapi:
+    image: einza/rains_tomorrow_api
+    container_name: api_server
+    networks:
+      - network_API_tests
+    ports:
+      - "8000:8000"
+  tests_authorization:
+    image:  einza/tu_authorization
+    container_name: tu_authorization
+    networks:
+      - network_API_tests
+    environment:
+      API_ADDRESS: api_server
+    volumes:
+      - ./tests_logs:/logs
+    depends_on:
+      - "fastapi"
+  tests_prediction:
+    image:  einza/tu_prediction
+    container_name: tu_prediction
+    networks:
+      - network_API_tests
+    environment:
+      API_ADDRESS: api_server
+    volumes:
+      - ./tests_logs:/logs
+    depends_on:
+      - "fastapi"
+networks:
+  network_API_tests:

@@ -2,11 +2,11 @@ import requests, os, json
 from datetime import datetime
 
 # définition de l'adresse de l'API
-#api_address = os.environ.get('API_ADDRESS')
-api_address = "127.0.0.1"
+api_address = os.environ.get('API_ADDRESS')
+#api_address = "127.0.0.1"
 # port de l'API
-#api_port = os.environ.get('API_PORT')
-api_port = "8000"
+api_port = os.environ.get('API_PORT')
+#api_port = "8000"
 
 def set_result(endpoint:str, username:str, password:str, expected_result:int, status_code:int, item_dict:dict, prediction:str):
     output = '''
@@ -16,7 +16,7 @@ def set_result(endpoint:str, username:str, password:str, expected_result:int, st
         Date : {date_exec}
     ============================
 
-    request done at ""{endpoint}'"
+    request done at "'{endpoint}'"
     | username={username}
     | password={password}
     | item={item_dict}
