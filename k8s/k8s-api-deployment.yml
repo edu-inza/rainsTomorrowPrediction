@@ -17,5 +17,6 @@ spec:
       containers:
       - name: rains-tomorrow-api
         image: einza/rains_tomorrow_api
+        imagePullPolicy: Never
         ports:
         - containerPort: 8000
