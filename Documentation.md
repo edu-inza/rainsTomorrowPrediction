@@ -9,9 +9,10 @@ L'api est containerisée avec docker pour l'exécution de tests unitaires et le 
 Le déploiement sur kubernetes met en place 3 réplicats et une exposition de l'API sur le port 80.
 
 ## Pré-requis techniques :
-- modules python : nécessaires pour exécution de l'api en local (voir fichier /api/requirements.txt)
+- optionnel - modules python : nécessaires pour l'exécution de l'api en local (voir fichier /api/requirements.txt)
+- git
 - docker engine : pour l'exécution des tests unitaires et déployer l'api en environnement de production
-- kubernetes : pour un déploiement de l'api en environnement de production
+- kubernetes : pour déployer l'api en environnement de production
 
 # 2. Description
 ## 2.1. REST API
