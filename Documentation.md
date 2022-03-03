@@ -14,6 +14,9 @@ Le déploiement sur kubernetes met en place 3 réplicats et une exposition de l'
 - docker engine : pour l'exécution des tests unitaires et déployer l'api en environnement de production
 - kubernetes : pour déployer l'api en environnement de production
 
+## Lancement automatique :
+Le fichier setup.sh permet d'automatiser l'ensemble des process pour les tests et le déploiement de l'apidu modèle de prédiction.
+
 # 2. Description
 ## 2.1. REST API
 ### 2.1.1. model.py
@@ -97,12 +100,9 @@ Les logs de l'exécution des tests unitaires sont dans le fichier `api_test.log`
 
 Le fichier `docker-compose.yaml` lance les 3 containers afin d'exécuter les tests unitaires.
 
-**TODO : fichier setup.sh**
-
-
 ## 2.3. k8s
 Le fichier `k8s-api-deployment.yml` permet de déployer un pod avec un container docker pour l'api du modèle de prédiction. L'api est exposé sur le port 8000. 3 réplicats sont configurés.
 Le fichier `k8s-service.yml` permet de déployer un service de type ClusterIP. Ceci permet d'exposer l'API à l'intérieur du cluster.
 Le fichier `k8s-ingress.yml` permet de déployer un ingress. Ceci permet d'exposer le service précédemment créé à l'extérieur du cluster.
 
-**TODO : fichier setup.sh**
+Si kubernetes est déployé sur une machine virtuelle, pour tester l'api, on peut créer un tunnel ssh entre la machine virtuelle et la machine locale. On peut ensuite accéder à la documentation swagger en accédant au endpoint /docs.
