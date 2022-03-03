@@ -4,7 +4,7 @@ STARTDIR = $PWD
 
 # get repository
 echo "Clone git repository"
-git clone https://github.com/edu-inza/rainsTomorrowPrediction
+git clone https://github.com/edu-inza/rainsTomorrowPrediction.git
 
 sleep 30
 
