@@ -1,38 +1,34 @@
 #!/bin/bash
 
-STARTDIR = $PWD
-
 # get repository
 echo "Clone git repository"
 git clone https://github.com/edu-inza/rainsTomorrowPrediction.git
 
-sleep 30
-
 # Unit tests with docker
 echo "API : build docker image"
-cd $STARTDIR/rainsTomorrowPrediction/api
+cd $PWD/rainsTomorrowPrediction/api
 docker image build . -t einza/rains_tomorrow_api
 
 echo "TU authorization : build docker image"
-cd $STARTDIR/rainsTomorrowPrediction/TU_authorization
+cd ../TU_authorization
 docker image build . -t einza/tu_authorization
 
 echo "TU_prediction : build docker image"
-cd $STARTDIR/rainsTomorrowPrediction/TU_prediction
+cd ../TU_prediction
 docker image build . -t einza/tu_prediction
 
 echo "Execute unit tests : docker compose up"
-cd $STARTDIR/rainsTomorrowPrediction
+cd ..
 docker-compose up -d
 
-sleep 30
+sleep 10
 
 echo "Docker compose down"
 docker-compose down
 
 # Deploy in kubernetes
 echo "Deploy api in kubernetes"
-cd $STARTDIR/rainsTomorrowPrediction/k8s
+cd ./k8s
 kubectl create -f k8s-api-deployment.yml
 kubectl get deployment
 
