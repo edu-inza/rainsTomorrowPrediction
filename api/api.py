@@ -58,13 +58,13 @@ app = FastAPI(title="Rains model api",
                 description="API pour le modèle de prédiction de rains.")
 
 @app.get('/status')
-def get_status():
+async def get_status():
     '''Returns api status : 1 --> api running correctly'''
     return 1
 
 @app.get('/authorization')
-async def get_userAuthentified(authorized : bool = Depends(verify_token)):
-    '''Return true if user is authentified, return false if not'''
+async def get_user_authorization(authorized : bool = Depends(verify_token)):
+    '''Return "authorized" if user is authentified and authorized, return exception if not'''
     if authorized:
         return {"detail" : "authorized"}
 
@@ -83,15 +83,15 @@ async def get_v1_predict(item: V1Item, authorized : bool = Depends(verify_token)
             return {"detail" : "Yes"}
 
 @app.post('/v2/rainTomorrow/predict')
-async def get_v1_predict(item: V2Item, authorized : bool = Depends(verify_token)):
+async def get_v2_predict(item: V2Item, authorized : bool = Depends(verify_token)):
     '''If user is authorized, return the v2 prediction'''
     if authorized:
         item_dict = item.dict()
         my_model = RainsModelV2()
         transform_item = my_model.transformCatValues(item_dict)
-        rainTomorrowV1 = my_model.predict(transform_item)
+        rainTomorrowV2 = my_model.predict(transform_item)
 
-        if rainTomorrowV1 == 0:
+        if rainTomorrowV2 == 0:
             return {"detail" : "No"}
         else:
             return {"detail" : "Yes"}

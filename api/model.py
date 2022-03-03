@@ -26,7 +26,7 @@ class RainsModel:
     
     
     ######################
-    #public methods
+    #methods
     ######################
 
     def importData(self) -> pd.DataFrame:
@@ -44,6 +44,7 @@ class RainsModel:
         self.data = self.data.drop(['Date'], axis=1)
     
     def processNan(self):
+        '''Process NaN values'''
         # Drop 4 columns with more than 30% Nan values
         self.data = self.data.drop(['Cloud9am'], axis=1)
         self.data = self.data.drop(['Evaporation'], axis=1)
@@ -92,8 +93,7 @@ class RainsModel:
 
     def dataPrepocessing(self):
         '''Data cleaning and data preprocessing for machine learning
-        Parameter : data : data to clean and process
-        Output : processed data'''
+        Parameter : data : data to clean and process'''
         self.processDate()
         self.processNan()
         self.replaceCatFeature()
@@ -112,6 +112,10 @@ class RainsModel:
             data = pd.DataFrame(inputData, index=['index'])
         
         return self.algoML.predict(data)
+
+######################
+# Model V1
+######################
 
 class RainsModelV1(RainsModel):
     def __init__(self):
@@ -139,6 +143,10 @@ class RainsModelV1(RainsModel):
         data['WindGustDir'] = data['WindGustDir'].replace(self.windGustDir)
 
         return data.values.tolist()
+
+######################
+# Model V2
+######################
 
 class RainsModelV2(RainsModel):
     def __init__(self):
