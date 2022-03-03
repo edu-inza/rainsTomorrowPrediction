@@ -1,3 +1,9 @@
+#### Status ####
+curl -X GET -i http://127.0.0.1:8000/status
+
+#### Authorization ####
+curl -X GET -i http://127.0.0.1:8000/v1/rainTomorrow/predict -H "Authorization:{""username"":""alice"",""password"":""wonderland""}" -H "Content-type:application/json"
+
 #### V1 ####
 curl -X POST -i http://127.0.0.1:8000/v1/rainTomorrow/predict -H "Authorization:{""username"":""alice"",""password"":""wonderland""}" -H "Content-type:application/json" -d "{""Humidity9am"": "49",""Humidity3pm"": "35",""WindGustSpeed"": "30",""Pressure9am"": "1018.5",""MaxTemp"": "23.9",""Rainfall"": "0",""WindGustDir"": ""WNW"",""Location"": ""Brisbane"",""RainToday"": ""No"",""Month"" : "9"}"
 
