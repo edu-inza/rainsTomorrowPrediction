@@ -1,4 +1,4 @@
-import requests, os, json
+import requests, os, json, base64
 from datetime import datetime
 
 # définition de l'adresse de l'API
@@ -40,7 +40,11 @@ def set_result(endpoint:str, username:str, password:str, expected_result:int, st
     with open(os.path.join(parent_path, 'api_test.log'), 'a') as file:
         file.write(output.format(endpoint=endpoint, username=username, password=password, date_exec=now_string, expected_result=expected_result, status_code=status_code, test_status=test_status))
 
-
+def base64_encode(message: str):
+    message_bytes = message.encode('ascii')
+    base64_bytes = base64.b64encode(message_bytes)
+    base64_message = base64_bytes.decode('ascii')
+    return base64_message
 
 def TU_status():
     r = requests.get(
@@ -49,11 +53,7 @@ def TU_status():
     set_result("/status", "", "",200, r.status_code)
 
 def TU_authorization(username:str, password:str, expected_result:int):
-    headers_dict = {"Authorization" : json.dumps({
-            "username": username,
-            "password": password
-        })
-    }
+    headers_dict = {"Authorization": "Basic " + base64_encode(username +":"+ password)}
     r = requests.get(
         url='http://{address}:{port}/authorization'.format(address=api_address, port=api_port),
         headers= headers_dict
