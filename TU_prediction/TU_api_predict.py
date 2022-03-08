@@ -1,4 +1,4 @@
-import requests, os, json
+import requests, os, json, base64
 from datetime import datetime
 
 # définition de l'adresse de l'API
@@ -43,12 +43,14 @@ def set_result(endpoint:str, username:str, password:str, expected_result:int, st
     with open(os.path.join(parent_path, 'api_test.log'), 'a') as file:
         file.write(output.format(endpoint=endpoint, username=username, password=password, date_exec=now_string, expected_result=expected_result, status_code=status_code, test_status=test_status, item_dict=item_dict, prediction=prediction))
 
+def base64_encode(message: str):
+    message_bytes = message.encode('ascii')
+    base64_bytes = base64.b64encode(message_bytes)
+    base64_message = base64_bytes.decode('ascii')
+    return base64_message
 
 def TU_rainTomorrow_predict(username:str, password:str, version:str, item_dict:dict):
-    headers_dict = {"Authorization" : json.dumps({
-            "username": username,
-            "password": password
-        }),
+    headers_dict = {"Authorization": "Basic " + base64_encode(username +":"+ password),
         "Content-Type": "application/json"
     }
     r = requests.post(

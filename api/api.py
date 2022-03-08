@@ -1,4 +1,5 @@
-from fastapi import FastAPI, HTTPException, Header, Depends, Request
+from fastapi import FastAPI, HTTPException, Depends, Security
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from pydantic import BaseModel
 from model import RainsModelV1, RainsModelV2
 import json
@@ -39,23 +40,26 @@ class V2Item(BaseModel):
     Pressure9am: float
     Pressure3pm: float
     RainToday: str    
+ 
 
+security = HTTPBasic()
 
-async def verify_token(req : Request):
-    token = req.headers['Authorization']
-    token_dict = json.loads(token)
-    user_dict = users_db.get(token_dict['username'])
+async def verify_token(credendials : HTTPBasicCredentials = Depends(security)):
+    username = credendials.username
+    password = credendials.password
+
+    user_dict = users_db.get(username)
 
     if not user_dict:
         raise HTTPException(status_code=400, detail="Incorrect username")
-    if user_dict['password'] == token_dict['password']:
+    if user_dict['password'] == password:
         return True
     else:
         raise HTTPException(status_code=401, detail="Incorrect password, unauthorized")
-    
+
 
 app = FastAPI(title="Rains model api",
-                description="API pour le modèle de prédiction de rains.")
+                description="API for rains tomorrow prediction in Australia")
 
 @app.get('/status')
 async def get_status():
