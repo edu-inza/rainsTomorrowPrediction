@@ -5,7 +5,6 @@ curl -X GET -i http://127.0.0.1:8000/status
 curl -X 'GET' 'http://localhost:8000/authorization' -H 'accept: application/json' -H 'Authorization: Basic YWxpY2U6d29uZGVybGFuZA=='
 
 #### V1 ####
-curl -X POST -i http://127.0.0.1:8000/v1/rainTomorrow/predict -H "Authorization:{""username"":""alice"",""password"":""wonderland""}" -H "Content-type:application/json" -d "{""Humidity9am"": "49",""Humidity3pm"": "35",""WindGustSpeed"": "30",""Pressure9am"": "1018.5",""MaxTemp"": "23.9",""Rainfall"": "0",""WindGustDir"": ""WNW"",""Location"": ""Brisbane"",""RainToday"": ""No"",""Month"" : "9"}"
 curl -X 'POST' \
   'http://localhost:8000/v1/rainTomorrow/predict' \
   -H 'accept: application/json' \
@@ -24,7 +23,6 @@ curl -X 'POST' \
   "Month": 9
 }'
 
-curl -X POST -i http://127.0.0.1:8000/v1/rainTomorrow/predict -H "Authorization:{""username"":""alice"",""password"":""wonderland""}" -H "Content-type:application/json" -d "{""Humidity9am"": "55",""Humidity3pm"": "41",""WindGustSpeed"": "17",""Pressure9am"": "1020.7",""MaxTemp"": "21",""Rainfall"": "0",""WindGustDir"": ""SSE"",""Location"": ""Brisbane"",""RainToday"": ""No"",""Month"" : "9"}"
 curl -X 'POST' \
   'http://localhost:8000/v1/rainTomorrow/predict' \
   -H 'accept: application/json' \
@@ -43,7 +41,6 @@ curl -X 'POST' \
   "Month": 9
 }'
 
-curl -X POST -i http://127.0.0.1:8000/v1/rainTomorrow/predict -H "Authorization:{""username"":""alice"",""password"":""wonderland""}" -H "Content-type:application/json" -d "{""Humidity9am"": "92",""Humidity3pm"": "91",""WindGustSpeed"": "15",""Pressure9am"": "1021.4",""MaxTemp"": "19.7",""Rainfall"": "8.6",""WindGustDir"": ""SSE"",""Location"": ""Brisbane"",""RainToday"": ""Yes"",""Month"" : "9"}"
 curl -X 'POST' \
   'http://localhost:8000/v1/rainTomorrow/predict' \
   -H 'accept: application/json' \
@@ -62,7 +59,6 @@ curl -X 'POST' \
   "Month": 9
 }'
 
-curl -X POST -i http://127.0.0.1:8000/v1/rainTomorrow/predict -H "Authorization:{""username"":""alice"",""password"":""wonderland""}" -H "Content-type:application/json" -d "{""Humidity9am"": "92",""Humidity3pm"": "91",""WindGustSpeed"": "15",""Pressure9am"": "1021.4",""MaxTemp"": "15",""Rainfall"": "24",""WindGustDir"": ""SSE"",""Location"": ""Brisbane"",""RainToday"": ""Yes"",""Month"" : "6"}"
 curl -X 'POST' \
   'http://localhost:8000/v1/rainTomorrow/predict' \
   -H 'accept: application/json' \
@@ -82,7 +78,6 @@ curl -X 'POST' \
 }'
 
 #### V2 ####
-curl -X POST -i http://127.0.0.1:8000/v2/rainTomorrow/predict -H "Authorization:{""username"":""alice"",""password"":""wonderland""}" -H "Content-type:application/
 curl -X 'POST' \
   'http://localhost:8000/v2/rainTomorrow/predict' \
   -H 'accept: application/json' \
@@ -99,7 +94,6 @@ curl -X 'POST' \
   "RainToday": "No"
 }'
 
-curl -X POST -i http://127.0.0.1:8000/v2/rainTomorrow/predict -H "Authorization:{""username"":""alice"",""password"":""wonderland""}" -H "Content-type:application/json" -d "{""MinTemp"": "15.7",""MaxTemp"": "21.9",""WindGustSpeed"": "24",""WindSpeed3pm"": "6",""Humidity3pm"": "38",""Pressure9am"": "1020.1",""Pressure3pm"": "1019.4",""RainToday"": ""No""}"
 curl -X 'POST' \
   'http://localhost:8000/v2/rainTomorrow/predict' \
   -H 'accept: application/json' \
@@ -116,7 +110,6 @@ curl -X 'POST' \
   "RainToday": "No"
 }'
 
-curl -X POST -i http://127.0.0.1:8000/v2/rainTomorrow/predict -H "Authorization:{""username"":""alice"",""password"":""wonderland""}" -H "Content-type:application/json" -d "{""MinTemp"": "16",""MaxTemp"": "21",""WindGustSpeed"": "17",""WindSpeed3pm"": "7",""Humidity3pm"": "41",""Pressure9am"": "1020.7",""Pressure3pm"": "1018.7",""RainToday"": ""No""}"
 curl -X 'POST' \
   'http://localhost:8000/v2/rainTomorrow/predict' \
   -H 'accept: application/json' \
@@ -133,7 +126,6 @@ curl -X 'POST' \
   "RainToday": "No"
 }'
 
-curl -X POST -i http://127.0.0.1:8000/v2/rainTomorrow/predict -H "Authorization:{""username"":""alice"",""password"":""wonderland""}" -H "Content-type:application/json" -d "{""MinTemp"": "13.1",""MaxTemp"": "19.7",""WindGustSpeed"": "15",""WindSpeed3pm"": "2",""Humidity3pm"": "91",""Pressure9am"": "1021.4",""Pressure3pm"": "1018.5",""RainToday"": ""Yes""}"
 curl -X 'POST' \
   'http://localhost:8000/v2/rainTomorrow/predict' \
   -H 'accept: application/json' \
